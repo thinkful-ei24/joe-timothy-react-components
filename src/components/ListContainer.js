@@ -2,6 +2,7 @@ import React from 'react';
 import './ListContainer.css';
 import SearchBar from './SearchBar';
 import ItemList from './ItemList';
+import AddItem from './AddItem';
 
 export default class ListContainer extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ export default class ListContainer extends React.Component {
       <div className='container'>
         <h1>List</h1>
         <SearchBar value={searchTerm} onSearchChange={(searchTerm) => this.setState({searchTerm})}/>
+        <AddItem itemToAdd={item => this.setState({items: [...this.state.items, item]})}/> 
         <ItemList items={searchResults}/>
       </div>
     );
