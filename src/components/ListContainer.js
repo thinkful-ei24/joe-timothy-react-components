@@ -7,16 +7,19 @@ export default class ListContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      items: ['Banana', 'Coconut', 'Pizza'],
+      searchTerm: ''
     }
   }
   
   render() {
+    const searchTerm = this.state.searchTerm;
+    const searchResults = this.state.items.filter(item => item.toLowerCase().includes(searchTerm.toLowerCase()));
     return(
       <div className='container'>
         <h1>List</h1>
-        <SearchBar />
-        <ItemList />
+        <SearchBar value={searchTerm} onSearchChange={(searchTerm) => this.setState({searchTerm})}/>
+        <ItemList items={searchResults}/>
       </div>
     );
   }

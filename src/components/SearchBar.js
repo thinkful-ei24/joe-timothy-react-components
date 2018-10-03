@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function SearchBar() {
+export default function SearchBar(props) {
   return(
     <div>
-      <input type='text' placeholder='Search Items'></input>
+      <input value={props.value} onChange={event=> props.onSearchChange(event.target.value)} type='text' placeholder='Search Items' ></input>
     </div>
   )
 }

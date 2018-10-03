@@ -1,12 +1,12 @@
 import React from 'react';
 
-export default function ItemList() {
+export default function ItemList(props) {
+
+  const items = props.items.map(item => (<li>{item}</li>));
   return(
     <div>
       <ul>
-        <li>Item1</li>
-        <li>Item2</li>
-        <li>Item3</li>
+        {items}
       </ul>
     </div>
   )
