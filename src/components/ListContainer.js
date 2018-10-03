@@ -13,6 +13,10 @@ export default class ListContainer extends React.Component {
     }
   }
   
+  deleteItem(item) {
+    this.setState({items: this.state.items.filter( x => x !== item)})
+  }
+
   render() {
     const searchTerm = this.state.searchTerm;
     const searchResults = this.state.items.filter(item => item.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -21,7 +25,7 @@ export default class ListContainer extends React.Component {
         <h1>List</h1>
         <SearchBar value={searchTerm} onSearchChange={(searchTerm) => this.setState({searchTerm})}/>
         <AddItem itemToAdd={item => this.setState({items: [...this.state.items, item]})}/> 
-        <ItemList items={searchResults}/>
+        <ItemList items={searchResults} deleteItem={item => this.deleteItem(item)}/>
       </div>
     );
   }
